@@ -15,7 +15,7 @@ function loginRequest()
         url: setGlobalUrl('login/login'),
         success: function(result)
         {
-            if (result === 'success')
+            if (result === 'S')
             {
                 window.location.href = setGlobalUrl('login/dashabord');
             }

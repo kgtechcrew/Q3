@@ -196,20 +196,17 @@ class Controller extends CController
      * @param type $json_data
      * @return type
      */
-    public static function apiService($data, $url)
+    public static function apiService($data, $url, $access_token)
     {
-        $json_data      = json_encode($data);
-        $server         = WEBSVCSERVER;
-        $restClient     = new RESTClient();
-        $base_64_encode = base64_encode(WEBSVCUSERNAME . ':' . WEBSVCPASSWORD);
-        $authentication = mb_convert_encoding($base_64_encode, 'US-ASCII', 'UTF-8');
+        $json_data  = json_encode($data);
+        $server     = WEBSVCSERVER;
+        $restClient = new RESTClient();
         $restClient->set_header('Content-Type', 'application/json');
         $restClient->set_header('Accept', 'application/json');
-        $restClient->set_header("Authorization Bearer {$access_token}");
-        $restClient->set_header("Authorization", "Basic " . $authentication);
+        $restClient->set_header("Authorization", "Bearer " . $access_token);
         $restClient->ssl(FALSE);
-        $response = $restClient->post($server . $url, $json_data, 'json');
-        $status   = $restClient->status();
+        $response   = $restClient->post($server . $url, $json_data, 'json');
+        $status     = $restClient->status();
         if ($status == 200)
         {
             return CJSON::decode(CJSON::encode($response, true), true);

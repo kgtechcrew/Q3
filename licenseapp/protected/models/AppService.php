@@ -15,17 +15,21 @@ class AppService extends CFormModel
     {
         $result = Controller::loginApi($loginForm);
         $status = $result['status'];
-        if ($status == 'success')
+        if ($status == 'S')
         {
             Yii::app()->session['token']  = $result['key'];
             Yii::app()->session['userid'] = $result['userid'];
+        }
+
+        if (is_numeric($result['userid']))
+        {
             $this->userDeviceService($result);
         }
 
         return $status;
     }
 
-    public function userDeviceService($result)
+    public function userDeviceService($result = array())
     {
         $userdevice                        = new UserDevice();
         $phpSniff                          = new phpSniff();
@@ -39,11 +43,13 @@ class AppService extends CFormModel
         $userdevice_info['sysbrowser']     = $sysbrowser;
         $userdevice_info['sysos']          = $sysos;
         $userdevice_info['devtype']        = $devtype;
-        $userdevice_info['flag']           = ''; //$result[''];
-        $userdevice_info['isexceeded']     = ''; //$result[''];
-        $userdevice_info['deviceexceeded'] = ''; //$result[''];
+        $userdevice_info['flag']           = $result['status'];
+        $userdevice_info['isexceeded']     = $result['isexceeded'];
+        $userdevice_info['deviceexceeded'] = $result['deviceexceeded'];
         $url                               = USER_DEVICE_API;
-        //$result                            = Controller::apiService($userdevice_info, $url);
+        $token                             = Yii::app()->session['token'];
+        $status                            = Controller::apiService($userdevice_info, $url, $token);
+        Yii::app()->session['loginid']     = $status['loginid'];
     }
 
 }
