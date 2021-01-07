@@ -135,6 +135,20 @@ class LicenseController extends Controller
         } 
     }
     
+    public function actionTrackLoginUsers()
+    {
+        $user_details = $this->validateToken();
+        if(!empty($user_details))
+        {
+            
+        }
+    }
+    
+    
+    
+    
+    
+    
     /*
      * Logout the application and storing the guid in the blacklist table
      * Inorder to avoid insecure subsequent requests after successful logout 
