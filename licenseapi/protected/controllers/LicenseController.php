@@ -145,6 +145,36 @@ class LicenseController extends Controller
         }
     }
 
+    
+    /*
+     * Load Dashboard Details
+     * Details fetched here are,
+     * IP address
+     * Browser Information
+     * Operating System
+     * Device Type ( Desktop / Mobile )
+     */
+
+    public function actionDashboard()
+    {
+        $user_details = array();
+        $user_details = $this->validateToken();
+
+        if (!empty($user_details))
+        {
+            $json           = file_get_contents('php://input');
+            $input_data     = CJSON::decode($json, true);
+            $loginid        = $input_data['loginid'];
+            $user           = new User();
+            $dashboard_info = $user->loadDashboardInfo($loginid);
+            $this->_sendResponse(200, $dashboard_info, "Content-Type: application/json");
+        }
+        else
+        {
+            $this->_sendResponse(401);
+        }
+    }
+    
     /*
      * Used to list all the users who have logged in currently in the application
      * Lists the details like users who have loggedin on multiple devices
@@ -158,8 +188,7 @@ class LicenseController extends Controller
         {
             $user                       = new User();
             $user_login_details         = $user->trackLoginUsers();
-            $user_login_details_encoded = CJSON::encode($user_login_details);
-            $this->_sendResponse(200, $user_login_details_encoded, "Content-Type: application/json");
+            $this->_sendResponse(200, $user_login_details, "Content-Type: application/json");
         }
         else
         {

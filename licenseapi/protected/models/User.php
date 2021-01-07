@@ -77,6 +77,22 @@ class User extends CActiveRecord
     }
 
     
+    
+    /** Loading the Dashboard Details **/
+    public function loadDashboardInfo($loginid)
+    {
+        $login_details          = UserLicenseHistory::model()->findByPk($loginid);
+        $response               = array();
+        $response['status']     = 'S';
+        $response['loginid']    = $loginid;
+        $response['sysip']      = $login_details->pat_sys_ip;
+        $response['sysbrowser'] = $login_details->pat_sys_browser;
+        $response['sysos']      = $login_details->pat_sys_os;
+        $response['devtype']    = $login_details->pat_dev_type;
+        return $response;
+    }
+    
+    
     /*
      * This Function will return all the logged in users currently being active in the application
      * Browser Details with IP is provided
