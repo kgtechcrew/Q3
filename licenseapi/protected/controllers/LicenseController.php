@@ -138,10 +138,15 @@ class LicenseController extends Controller
             $result['status']  = 'F';
             $result['loginid'] = NULL;
         }
-        $result['sysip']      = $input_data['sysip'];
-        $result['sysbrowser'] = $input_data['sysbrowser'];
-        $result['sysos']      = $input_data['sysos'];
-        $result['devtype']    = $input_data['devtype'];
+        
+        $result['sysip']         = $input_data['sysip'];
+        $result['sysbrowser']    = $input_data['sysbrowser'];
+        $result['sysos']         = $input_data['sysos'];
+        $result['devtype']       = $input_data['devtype'];
+        
+        $user_license_details    = User::model()->findByPk($input_data['userid']);
+        $result['license']       = $user_license_details->udt_licenseid;
+        
         $this->_sendResponse(200, $result, "Content-Type: application/json");
     }
 
