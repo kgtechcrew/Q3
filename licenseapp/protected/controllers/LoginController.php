@@ -50,21 +50,35 @@ class LoginController extends Controller
 
         if (!empty($loginForm))
         {
-            $result = $model->loginService($loginForm);
-            if ($result == 'S')
-            {
-                echo $result;
-            }
+            $result   = $model->loginService($loginForm);
+            $response = array('status' => $result['status'], 'message' => $result['message']);
+            echo CJSON::encode($response);
         }
         else
         {
-            $this->render('login', array());
+            $this->render('login');
         }
     }
 
     public function actionDashabord()
     {
-        $this->render('dashabord', array());
+        $model     = new AppService();
+        $dashboard = $model->dashboardService();
+        $this->render('dashabord', array('dashboard' => $dashboard));
+    }
+
+    public function actionTrackLoginUser()
+    {
+        $model      = new AppService();
+        $login_user = $model->trackLoginUserService();
+        $this->render('track', array('login_user' => $login_user));
+    }
+
+    public function actionLogout()
+    {
+        $model      = new AppService();
+        $login_user = $model->trackLoginUserService();
+        $this->render('login');
     }
 
 }

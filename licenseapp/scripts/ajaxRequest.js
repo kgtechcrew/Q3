@@ -12,12 +12,22 @@ function loginRequest()
         type: "POST",
         data: $('#login_form').serialize(),
         async: false,
+        dataType: "json",
         url: setGlobalUrl('login/login'),
         success: function(result)
         {
-            if (result === 'S')
+            if (result['status'] === 'S')
             {
                 window.location.href = setGlobalUrl('login/dashabord');
+            }
+            else
+            {
+                $('#login_error_message').html(result['message']);
+                $('#exampleModalCenter').modal({
+                    show: true,
+                    backdrop: 'static',
+                    keyboard: false
+                });
             }
         }
     });

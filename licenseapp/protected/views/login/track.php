@@ -16,8 +16,8 @@
                             <div class="wizard-navigation">
                                 <ul class="nav nav-pills">
                                     <li style="width: 14%;"><a href="#details" data-toggle="tab" aria-expanded="false">  </a></li>
-                                    <li style="width: 38%;" class="active"><a class="active" href="dashabord.html"   aria-expanded="true"> Dashboard </a></li>
-                                    <li style="width: 33%;"><a href="track.html"> Login User Tracking System  </a></li>
+                                    <li style="width: 38%;" class="active"><a class="active" href="<?php echo $this->createUrl('login/dashabord'); ?>"   aria-expanded="true"> Dashboard </a></li>
+                                    <li style="width: 33%;"><a href="<?php echo $this->createUrl('login/trackLoginUser'); ?>"> Login User Tracking System  </a></li>
                                 </ul>
                                 <div class="moving-tab" style="width: 240px;transform: translate3d(636px, 0px, 0px);transition: all 0.5s cubic-bezier(0.29, 1.42, 0.79, 1) 0s;">Login User Tracking System</div>
                                 <div class="tab-content">
@@ -29,26 +29,33 @@
                                                     <thead class="thead-light">
                                                         <tr>
                                                             <th scope="col">User Name</th>
-                                                            <th scope="col">Browser Details</th>
-                                                            <th scope="col">Licence</th>
+                                                            <th scope="col">User Email</th>
+                                                            <th scope="col">License Id</th>
+                                                            <th scope="col">Login DateTime</th>
+                                                            <th scope="col">IP</th>
+                                                            <th scope="col">Browser</th>
+                                                            <th scope="col">Operating System</th>
+                                                            <th scope="col">Device Type</th>
+                                                            <th scope="col">Number Of Devices</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>Mark</td>
-                                                            <td>Otto</td>
-                                                            <td>@mdo</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Jacob</td>
-                                                            <td>Thornton</td>
-                                                            <td>@fat</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td >Larry the Bird</td>
-                                                            <td>Thornton</td>
-                                                            <td>@twitter</td>
-                                                        </tr>
+                                                        <?php
+                                                        foreach ($login_user as $key => $value)
+                                                        {
+                                                            ?>
+                                                            <tr>
+                                                                <td><?php echo $value['User Name']; ?></td>
+                                                                <td><?php echo $value['User Email']; ?></td>
+                                                                <td><?php echo $value['LicenseId']; ?></td>
+                                                                <td><?php echo $value['Login DateTime']; ?></td>
+                                                                <td><?php echo $value['IP']; ?></td>
+                                                                <td><?php echo $value['Browser']; ?></td>
+                                                                <td><?php echo $value['Operating System']; ?></td>
+                                                                <td><?php echo $value['Device Type']; ?></td>
+                                                                <td><?php echo $value['Number Of Devices']; ?></td>
+                                                            </tr>
+                                                        <?php } ?>
                                                     </tbody>
                                                 </table>
                                             </div>
