@@ -76,8 +76,8 @@ class LoginController extends Controller
 
     public function actionLogout()
     {
-        $model      = new AppService();
-        $login_user = $model->trackLoginUserService();
+        $model = new AppService();
+        $model->logoutService();
         $this->render('login');
     }
 
