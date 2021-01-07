@@ -221,7 +221,7 @@ class LicenseController extends Controller
 
             $loginid                      = $input_data['loginid'];
             $log_details                  = UserLicenseHistory::model()->findByPk($loginid);
-            $log_details->logout_status   = 'Y';
+            $log_details->logout_status   = 'S';
             $log_details->pat_logout_time = $this->global_model->fetchDBTime();
             $log_details->pat_guid        = '';
             $log_details->update();

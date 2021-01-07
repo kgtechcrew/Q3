@@ -9,6 +9,9 @@ class Controller extends CController
     public $connection;
     public $renewed_token;
 
+    /*
+     * Entry Script of the Request
+     */
     public function init()
     {
         try
@@ -46,7 +49,10 @@ class Controller extends CController
         }
     }
 
-   
+   /*
+    * Token Validation - token sent in the header is validated & verified here
+    * whichin turn allows for the successful login
+    */
     public function validateToken()
     {
         $user_id      = NULL;
@@ -63,8 +69,6 @@ class Controller extends CController
             /**
              * Decoding the jwtAuthToken sent in the request header (if token is expired unauthorized exception is thrown) 
              * Token Expiration Check
-             * 
-             * 
              **/
             try
             {
@@ -104,7 +108,11 @@ class Controller extends CController
         }
     }
 
-    /** Storing all the requests  * */
+    /**
+     * 
+     * @param type $ex_msg
+     * storing the request logs 
+     */
     public function storeRequestLog($ex_msg = '')
     {
         $headers           = CJSON::encode(getallheaders());
@@ -132,7 +140,13 @@ class Controller extends CController
         $command->execute();
     }
 
-    
+    /**
+     * 
+     * @param type $user_id
+     * @param type $payload_guid
+     * @return int
+     * checking whether the guid is already present in the blacklist table and confirming the logout
+     */
     public function checkSuccessfulLogout($user_id, $payload_guid)
     {
         $logged_out = 0;
@@ -156,6 +170,10 @@ class Controller extends CController
         $this->connection = Yii::app()->db;
     }
 
+    /* 
+     * Functions which doesn't need the authentication & authorization is mentioned here.
+     * 
+     */
     public function exceptionUrls()
     {
         $exception_urls  = array(
@@ -172,6 +190,10 @@ class Controller extends CController
         return $exception_count;
     }
 
+    
+    /*
+     * Global Function used for returning the response body 
+     */
     public function _sendResponse($status = 200, $body = '', $content_type = 'text/html')
     {
         $status_header = 'HTTP/1.1 ' . $status . ' ' . Controller::_getStatusCodeMessage($status);
