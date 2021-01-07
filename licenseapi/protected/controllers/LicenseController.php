@@ -53,7 +53,6 @@ class LicenseController extends Controller
 
                 $token->useremail = $username;
                 $token->userid    = $userdetails->udt_id;
-                $token->generated_token = $token->generateToken();
 
                 /* valid password check */
                 if ($valid_pwd)
@@ -74,6 +73,7 @@ class LicenseController extends Controller
                         }
                         else
                         {
+                            $token->generated_token = $token->generateToken();
                             $this->global_model->formatResponseMessages("LS", $token);
                         }
                     }
@@ -106,45 +106,45 @@ class LicenseController extends Controller
     public function actionStoreUserDeviceInfo()
     {
         $user_details = array();
-        $user_details = $this->validateToken();
+        $json         = file_get_contents('php://input');
+        $input_data   = CJSON::decode($json, true);
 
-        if (!empty($user_details))
+        if ($input_data['flag'] == 'S')
         {
-            $json                     = file_get_contents('php://input');
-            $input_data               = CJSON::decode($json, true);
-            $userhis                  = new UserLicenseHistory();
-            $userhis->user_id         = $user_details['userid'];
-            $userhis->pat_login_time  = $this->global_model->fetchDBTime();
-            $userhis->login_status    = $input_data['flag'];
-            $userhis->pat_sys_ip      = $input_data['sysip'];
-            $userhis->pat_sys_browser = $input_data['sysbrowser'];
-            $userhis->pat_sys_os      = $input_data['sysos'];
-            $userhis->pat_dev_type    = $input_data['devtype'];
-            $userhis->pat_guid        = ($input_data['flag'] == 'S')?$user_details['guid']:'';
-            $userhis->login_exceeded  = $input_data['isexceeded'];
-            $userhis->device_exceeded = $input_data['deviceexceeded'];
-            $userhis->save();
-
-            $id = $userhis->id;
-            if ($userhis->login_status == "S")
-            {
-                $result['status']  = 'S';
-                $result['loginid'] = $id;
-            }
-            else
-            {
-                $result['status']  = 'F';
-                $result['loginid'] = NULL;
-            }
-            $result['sysip']      = $input_data['sysip'];
-            $result['sysbrowser'] = $input_data['sysbrowser'];
-            $result['sysos']      = $input_data['sysos'];
-            $result['devtype']    = $input_data['devtype'];
-            $this->_sendResponse(200, $result, "Content-Type: application/json");
+            $user_details = $this->validateToken();
         }
+
+        $userhis                  = new UserLicenseHistory();
+        $userhis->user_id         = $user_details['userid'];
+        $userhis->pat_login_time  = $this->global_model->fetchDBTime();
+        $userhis->login_status    = $input_data['flag'];
+        $userhis->pat_sys_ip      = $input_data['sysip'];
+        $userhis->pat_sys_browser = $input_data['sysbrowser'];
+        $userhis->pat_sys_os      = $input_data['sysos'];
+        $userhis->pat_dev_type    = $input_data['devtype'];
+        $userhis->pat_guid        = ($input_data['flag'] == 'S') ? $user_details['guid'] : '';
+        $userhis->login_exceeded  = $input_data['isexceeded'];
+        $userhis->device_exceeded = $input_data['deviceexceeded'];
+        $userhis->save();
+
+        $id = $userhis->id;
+        if ($userhis->login_status == "S")
+        {
+            $result['status']  = 'S';
+            $result['loginid'] = $id;
+        }
+        else
+        {
+            $result['status']  = 'F';
+            $result['loginid'] = NULL;
+        }
+        $result['sysip']      = $input_data['sysip'];
+        $result['sysbrowser'] = $input_data['sysbrowser'];
+        $result['sysos']      = $input_data['sysos'];
+        $result['devtype']    = $input_data['devtype'];
+        $this->_sendResponse(200, $result, "Content-Type: application/json");
     }
 
-    
     /*
      * Load Dashboard Details
      * Details fetched here are,
