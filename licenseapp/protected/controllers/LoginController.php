@@ -51,7 +51,7 @@ class LoginController extends Controller
         if (!empty($loginForm))
         {
             $result = $model->loginService($loginForm);
-            if ($result == 'success')
+            if ($result == 'S')
             {
                 echo $result;
             }
