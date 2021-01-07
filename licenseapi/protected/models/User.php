@@ -104,7 +104,7 @@ class User extends CActiveRecord
                     concat(u.udt_firstname," ",u.udt_lastname) AS "User Name",
                     u.udt_email AS "User Email",
                     u.udt_licenseid AS LicenseId,
-                    DATE_FORMAT(h.pat_login_time, "%m/%d/%Y H:i:s") AS "Login DateTime",
+                    DATE_FORMAT(h.pat_login_time, "%m/%d/%Y %H:%i:%s") AS "Login DateTime",
                     h.pat_sys_ip AS "IP",
                     h.pat_sys_browser AS "Browser",
                     h.pat_sys_os AS "Operating System",
