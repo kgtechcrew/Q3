@@ -2,6 +2,7 @@
 
 class User extends CActiveRecord
 {
+
     /**
      * @return string the associated database table name
      */
@@ -75,4 +76,29 @@ class User extends CActiveRecord
         return false;
     }
 
+    
+    /*
+     * This Function will return all the logged in users currently being active in the application
+     * Browser Details with IP is provided
+     * No of devices logged in for a particular user is also displayed.
+     */
+    public function trackLoginUsers()
+    {
+        $sql          = 'SELECT 
+                    concat(u.udt_firstname," ",u.udt_lastname) AS "User Name",
+                    u.udt_email AS "User Email",
+                    u.udt_licenseid AS LicenseId,
+                    DATE_FORMAT(h.pat_login_time, "%m/%d/%Y H:i:s") AS "Login DateTime",
+                    h.pat_sys_ip AS "IP",
+                    h.pat_sys_browser AS "Browser",
+                    h.pat_sys_os AS "Operating System",
+                    h.pat_dev_type AS "Device Type",
+                    COUNT(*) AS "Number Of Devices"
+                        FROM license_his_user_log h
+                            JOIN udt_user_details u ON h.user_id = u.udt_id
+                               WHERE login_status = "S" AND logout_status IS NULL
+                                    GROUP BY h.user_id HAVING COUNT(*) >= 1';
+        $user_details = Yii::app()->db->createCommand($sql)->queryAll();
+        return $user_details;
+    }
 }

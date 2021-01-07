@@ -135,19 +135,27 @@ class LicenseController extends Controller
         } 
     }
     
+    
+    /*
+     * Used to list all the users who have logged in currently in the application
+     * Lists the details like users who have loggedin on multiple devices
+     * Browser,IP,OS & Device Informations
+     */
     public function actionTrackLoginUsers()
     {
         $user_details = $this->validateToken();
         if(!empty($user_details))
         {
-            
+            $user = new User();
+            $user_login_details = $user->trackLoginUsers();
+            $user_login_details_encoded = CJSON::encode($user_login_details);
+            $this->_sendResponse(200, $user_login_details_encoded, "Content-Type: application/json"); 
+        }
+        else
+        {
+            $this->_sendResponse(401);
         }
     }
-    
-    
-    
-    
-    
     
     /*
      * Logout the application and storing the guid in the blacklist table
