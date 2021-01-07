@@ -8,9 +8,9 @@
                         <form action="" method="">
                             <div class="wizard-header">
                                 <h3 class="wizard-title" style="position: relative">
-                                    License Portal
+                                    Employee Tracking System
                                     <div class="pull-right mr-3" style=" position: absolute;   right: 0;    top: -16px;   right: 18px;"> 
-                                        <a href="login.html" class="btn btn-dark mr-3"> <span class="material-icons">power_settings_new</span> </a></div>
+                                        <a href="<?php echo $this->createUrl('login/logout'); ?>" class="btn btn-dark mr-3"> <span class="material-icons">power_settings_new</span> </a></div>
                                 </h3>
                             </div>
                             <div class="wizard-navigation">
@@ -59,7 +59,7 @@
                                                         <div class="icon">
                                                             <i class="material-icons">verified</i>
                                                         </div>
-                                                        <h6>Your licence number : <span class="amt"> BW123 </span> </h6>
+                                                        <h6>Your licence number : <span class="amt"> <?php echo $dashboard['license']; ?> </span> </h6>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
@@ -68,7 +68,11 @@
                                                         <div class="icon">
                                                             <i class="material-icons">language</i>
                                                         </div>
-                                                        <h6><?php echo $dashboard['devtype'] . ' ' . $dashboard['sysbrowser'] . ' ' . $dashboard['sysos']; ?> <span class="amt"> IP : <?php echo $dashboard['sysip']; ?> </span></h6>
+                                                        <h6><?php echo $dashboard['devtype'] . ' ' . $dashboard['sysbrowser'] . ' ' . $dashboard['sysos']; ?> 
+                                                            
+                                                            <span class="amt"> Device Type : <?php echo $dashboard['devtype']; ?>
+                                                            <span class="amt"> IP : <?php echo $dashboard['sysip']; ?> </span>
+                                                        </h6>
                                                     </div>
                                                 </div>
                                             </div>

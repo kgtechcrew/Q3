@@ -49,3 +49,9 @@ function clearErrorMessage()
     $('#username_error').html('');
     $('#password_error').html('');
 }
+
+/** Back button restructions **/
+history.pushState(null, null, null);
+window.addEventListener('popstate', function() {
+    history.pushState(null, null, null);
+});

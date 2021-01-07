@@ -28,7 +28,11 @@ class AppService extends CFormModel
 
         return $result;
     }
-
+    
+    /**
+     * This function is used to send the 
+     * @param type $result
+     */
     public function userDeviceService($result = array())
     {
         $userdevice                        = new UserDevice();
@@ -73,9 +77,11 @@ class AppService extends CFormModel
 
     public function logoutService()
     {
-        $loginid = Yii::app()->session['loginid'];
-        $url     = TRACK_LOGIN_USER_API;
-        $data    = Controller::apiService($json, $url, $token);
+        $json            = array();
+        $url             = LOGOUT_API;
+        $json['loginid'] = Yii::app()->session['loginid'];
+        $token           = Yii::app()->session['token'];
+        $data            = Controller::apiService($json, $url, $token);
         return $data;
     }
 

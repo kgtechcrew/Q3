@@ -17,6 +17,7 @@ define("LOGIN_API", "Q3/licenseapi/license/login");
 define("USER_DEVICE_API", "Q3/licenseapi/license/storeUserDeviceInfo");
 define("DASHBOARD_API", "Q3/licenseapi/license/dashboard");
 define("TRACK_LOGIN_USER_API", "Q3/licenseapi/license/trackLoginUsers");
+define("LOGOUT_API", "Q3/licenseapi/license/logout");
 define("WEBSVCUSERNAME", "admin");
 define("WEBSVCPASSWORD", "admin");
 

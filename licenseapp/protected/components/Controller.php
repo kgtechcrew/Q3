@@ -196,7 +196,7 @@ class Controller extends CController
      * @param type $json_data
      * @return type
      */
-    public static function apiService($data, $url, $access_token)
+    public static function apiService($data, $url, $access_token = '')
     {
         $json_data  = json_encode($data);
         $server     = WEBSVCSERVER;
