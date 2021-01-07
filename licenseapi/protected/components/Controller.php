@@ -107,8 +107,23 @@ class Controller extends CController
     /** Storing all the requests  * */
     public function storeRequestLog($ex_msg = '')
     {
-        $headers       = CJSON::encode(getallheaders());
-        $input_details = '';
+        $headers           = CJSON::encode(getallheaders());
+        $file_get_contents = file_get_contents('php://input');
+        if(!empty($file_get_contents))
+        {
+            if(is_array($file_get_contents))
+            {
+                $input_details = CJSON::encode($file_get_contents);
+            }
+            else
+            {
+                $input_details = $file_get_contents;
+            }
+        }
+        else
+        {
+            $input_details = '';
+        }
         $sql           = "insert into lal_license_api_log(header_details,input_details,comments) values(:header_details,:input_details,:comments)";
         $command       = Yii::app()->db->createCommand($sql);
         $command->bindParam(":header_details", $headers);
