@@ -68,9 +68,10 @@
                                                         <div class="icon">
                                                             <i class="material-icons">language</i>
                                                         </div>
-                                                        <h6><?php echo $dashboard['devtype'] . ' ' . $dashboard['sysbrowser'] . ' ' . $dashboard['sysos']; ?> 
-                                                            
-                                                            <span class="amt"> Device Type : <?php echo $dashboard['devtype']; ?>
+                                                        <h6> Your Browser Details 
+                                                            <span class="amt"> Device Type : <?php echo $dashboard['devtype']; ?></span>
+                                                            <span class="amt"> Browser : <?php echo $dashboard['sysbrowser']; ?></span>
+                                                            <span class="amt"> System OS : <?php echo $dashboard['sysos']; ?></span>
                                                             <span class="amt"> IP : <?php echo $dashboard['sysip']; ?> </span>
                                                         </h6>
                                                     </div>
