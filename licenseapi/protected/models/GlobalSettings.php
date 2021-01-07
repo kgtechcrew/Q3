@@ -10,7 +10,7 @@ class GlobalSettings extends CFormModel
     {
         $sql = "SELECT COUNT(*) FROM (
                     SELECT COUNT(*),user_id FROM license_his_user_log 
-                    WHERE login_status = 'Y'  AND logout_status IS NULL
+                    WHERE login_status = 'S'  AND logout_status IS NULL
                     GROUP BY user_id HAVING COUNT(*) >= 1) license_table";
 
         $count = Yii::app()->db->createCommand($sql)->queryScalar();
@@ -52,7 +52,7 @@ class GlobalSettings extends CFormModel
      */
     public function checkUserDevicesCount($userid)
     {
-        $sql = "SELECT COUNT(*) FROM license_his_user_log WHERE user_id = ".$userid." AND login_status = 'Y' AND logout_status IS NULL";
+        $sql = "SELECT COUNT(*) FROM license_his_user_log WHERE user_id = ".$userid." AND login_status = 'S' AND logout_status IS NULL";
         $count = Yii::app()->db->createCommand($sql)->queryScalar();
         return $count;
     }
