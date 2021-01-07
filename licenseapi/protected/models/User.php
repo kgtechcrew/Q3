@@ -89,7 +89,7 @@ class User extends CActiveRecord
         $response['sysbrowser'] = $login_details->pat_sys_browser;
         $response['sysos']      = $login_details->pat_sys_os;
         $response['devtype']    = $login_details->pat_dev_type;
-        $userid                 = $login_details->userid;
+        $userid                 = $login_details->user_id;
         $user_license_details   = User::model()->findByPk($userid);
         $response['license']    = $user_license_details->udt_licenseid;
         return $response;

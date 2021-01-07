@@ -118,7 +118,7 @@ class GlobalSettings extends CFormModel
                 $result['userid']             = $token->userid;
                 $result['isexceeded']         = 'Y';
                 $result['deviceexceeded']     = 'N';
-                $result['message']            = 'Count Exceeded';
+                $result['message']            = Yii::t('ui','LCE');
                 $controller->_sendResponse(200, $result, "Content-Type: application/json");
                 break;
             case "ADE":
@@ -127,7 +127,7 @@ class GlobalSettings extends CFormModel
                 $result['userid']              = $token->userid;
                 $result['isexceeded']          = 'N';
                 $result['deviceexceeded']      = 'Y';
-                $result['message']             = 'Count Exceeded';
+                $result['message']             = Yii::t('ui','ADE');
                 $controller->_sendResponse(200, $result, "Content-Type: application/json");
                 break;
             case "LS":
@@ -136,7 +136,7 @@ class GlobalSettings extends CFormModel
                 $result['userid']              = $token->userid;
                 $result['isexceeded']          = 'N';
                 $result['deviceexceeded']      = 'N';
-                $result['message']             = 'Key has been successfully generated.';
+                $result['message']             = Yii::t('ui','LS');
                 $controller->_sendResponse(200, $result, "Content-Type: application/json");
                 break;
             case "VPWD":
@@ -145,7 +145,7 @@ class GlobalSettings extends CFormModel
                 $result['userid']              = $token->userid;
                 $result['isexceeded']          = 'N';
                 $result['deviceexceeded']      = 'N';
-                $result['message'] = 'Please enter a valid password.';
+                $result['message']             = Yii::t('ui','VPWD');
                 $controller->_sendResponse(200, $result, "Content-Type: application/json");
                 break;
             case "VUNAME":
@@ -154,7 +154,7 @@ class GlobalSettings extends CFormModel
                 $result['userid']              = NULL;
                 $result['isexceeded']          = 'N';
                 $result['deviceexceeded']      = 'N';
-                $result['message'] = 'Please enter a valid username.';
+                $result['message']             = Yii::t('ui','VUNAME');
                 $controller->_sendResponse(200, $result, "Content-Type: application/json");
                 break;
             default:
