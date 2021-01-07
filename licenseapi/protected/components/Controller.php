@@ -92,7 +92,7 @@ class Controller extends CController
                 
                 $token_model            = new Token();
                 $token_model->userid    = $user_id;
-                $token_model->useremail = $payload->profiles[0]->useremail;
+                $token_model->useremail = $payload->profiles[0]->email;
                 $this->renewed_token    = $token_model->generateToken($payload_guid);
                 
                 return array('userid' => $user_id, 'guid' => $payload_guid);
