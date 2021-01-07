@@ -12,13 +12,13 @@ class Token
     public $userid          = NULL;
     public $generated_token = NULL;
     
-    public function generateToken()
+    public function generateToken($guid = NULL)
     {
         $iat   = time();
         $exp   = $iat + 1 * 60 * 10;
         
         /** Generating the guid **/
-        $guid  = $this->generateGuid();
+        $guid  = empty($guid)?$this->generateGuid():$guid;
         
         $user_token              = array();
         $user_token[0]['email']  = $this->useremail;

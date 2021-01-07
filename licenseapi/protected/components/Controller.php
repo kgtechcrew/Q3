@@ -7,6 +7,7 @@
 class Controller extends CController
 {
     public $connection;
+    public $renewed_token;
 
     public function init()
     {
@@ -88,6 +89,12 @@ class Controller extends CController
             }
             else
             {
+                
+                $token_model            = new Token();
+                $token_model->userid    = $user_id;
+                $token_model->useremail = $payload->profiles[0]->useremail;
+                $this->renewed_token    = $token_model->generateToken($payload_guid);
+                
                 return array('userid' => $user_id, 'guid' => $payload_guid);
             }
         }
@@ -155,7 +162,11 @@ class Controller extends CController
         $status_header = 'HTTP/1.1 ' . $status . ' ' . Controller::_getStatusCodeMessage($status);
         header($status_header);
         header('Content-type: ' . $content_type);
-
+        if($status == 200)
+        {
+            header('LoginToken: ' . $this->renewed_token);
+        }
+        
         if ($body != '')
         {
             if ($content_type == 'application/xml')

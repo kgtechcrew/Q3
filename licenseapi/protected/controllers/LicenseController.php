@@ -1,22 +1,27 @@
 <?php
 
 class LicenseController extends Controller
-{ 
+{
+
     public $global_model = NULL;
-    
+
     /* Global objects defined in the constructor */
-    public function __construct() {
-        
+
+    public function __construct()
+    {
+
         $this->global_model = new GlobalSettings();
     }
-    
+
     /*
      * Default Action For This API
      */
-    public function actionIndex() {
+
+    public function actionIndex()
+    {
         
     }
-    
+
     /*
      * Login Authentication  ---> Basic Authentication is used here
      * Username --> Email ID
@@ -28,49 +33,50 @@ class LicenseController extends Controller
      * Password Valid Check
      * If login is successfull then the JWT token will be sent as a response to the application.
      */
+
     public function actionLogin()
     {
         if (isset($_SERVER['PHP_AUTH_USER']) && isset($_SERVER['PHP_AUTH_PW']))
         {
-            $user_model  = new User();
-            $token       = new Token();
-            
-            $username    = trim($_SERVER['PHP_AUTH_USER']);
-            $password    = trim($_SERVER['PHP_AUTH_PW']);
-            
+            $user_model = new User();
+            $token      = new Token();
+
+            $username = trim($_SERVER['PHP_AUTH_USER']);
+            $password = trim($_SERVER['PHP_AUTH_PW']);
+
             $userdetails = User::model()->find(array('condition' => 'udt_email = "' . $username . '"'));
-            $result     = array();
+            $result      = array();
             if (!empty($userdetails))
             {
                 $dbpassword = $userdetails->udt_password;
                 $valid_pwd  = $user_model->validatePassword($dbpassword, $password);
-                
-                $token->useremail        = $username;
-                $token->userid           = $userdetails->udt_id;
-                
+
+                $token->useremail = $username;
+                $token->userid    = $userdetails->udt_id;
+
                 /* valid password check */
                 if ($valid_pwd)
                 {
                     /* concurrent users check */
-                    $count_exceeded  =  $this->global_model->isConcurrentUsersExceeded();
-                    if($count_exceeded)
+                    $count_exceeded = $this->global_model->isConcurrentUsersExceeded();
+                    if ($count_exceeded)
                     {
                         $this->global_model->formatResponseMessages("LCE", $token);
                     }
                     else
                     {
                         /* Devices count check */
-                        $device_count_exceeded  =  $this->global_model->isUsersAllowedDevicesExceeded($token->userid);
-                        if($device_count_exceeded)
+                        $device_count_exceeded = $this->global_model->isUsersAllowedDevicesExceeded($token->userid);
+                        if ($device_count_exceeded)
                         {
                             $this->global_model->formatResponseMessages("ADE", $token);
                         }
                         else
                         {
                             /* Returning JWT Token as successful login */
-                            $token->generated_token  = $token->generateToken();
+                            $token->generated_token = $token->generateToken();
                             $this->global_model->formatResponseMessages("LS", $token);
-                        } 
+                        }
                     }
                 }
                 else
@@ -88,7 +94,7 @@ class LicenseController extends Controller
             $this->_sendResponse(500);
         }
     }
-    
+
     /*
      * Storing the Device Information from where this API is triggered
      * Details stored here are,
@@ -97,12 +103,13 @@ class LicenseController extends Controller
      * Operating System
      * Device Type ( Desktop / Mobile )
      */
+
     public function actionStoreUserDeviceInfo()
     {
         $user_details = array();
         $user_details = $this->validateToken();
-        
-        if(!empty($user_details))
+
+        if (!empty($user_details))
         {
             $json                     = file_get_contents('php://input');
             $input_data               = CJSON::decode($json, true);
@@ -118,80 +125,83 @@ class LicenseController extends Controller
             $userhis->login_exceeded  = $input_data['isexceeded'];
             $userhis->device_exceeded = $input_data['deviceexceeded'];
             $userhis->save();
-            
-            $id                       = $userhis->id;
-            if($userhis->login_status == "S")
+
+            $id = $userhis->id;
+            if ($userhis->login_status == "S")
             {
-                $result['status']         = 'S';
-                $result['loginid']        = $id;
-                $this->_sendResponse(200, $result, "Content-Type: application/json"); 
+                $result['status']  = 'S';
+                $result['loginid'] = $id;
             }
             else
             {
-                $result['status']         = 'F';
-                $result['loginid']        = NULL;
-                $this->_sendResponse(200, $result, "Content-Type: application/json"); 
+                $result['status']  = 'F';
+                $result['loginid'] = NULL;
             }
-        } 
+            $result['sysip']      = $input_data['sysip'];
+            $result['sysbrowser'] = $input_data['sysbrowser'];
+            $result['sysos']      = $input_data['sysos'];
+            $result['devtype']    = $input_data['devtype'];
+            $this->_sendResponse(200, $result, "Content-Type: application/json");
+        }
     }
-    
-    
+
     /*
      * Used to list all the users who have logged in currently in the application
      * Lists the details like users who have loggedin on multiple devices
      * Browser,IP,OS & Device Informations
      */
+
     public function actionTrackLoginUsers()
     {
         $user_details = $this->validateToken();
-        if(!empty($user_details))
+        if (!empty($user_details))
         {
-            $user = new User();
-            $user_login_details = $user->trackLoginUsers();
+            $user                       = new User();
+            $user_login_details         = $user->trackLoginUsers();
             $user_login_details_encoded = CJSON::encode($user_login_details);
-            $this->_sendResponse(200, $user_login_details_encoded, "Content-Type: application/json"); 
+            $this->_sendResponse(200, $user_login_details_encoded, "Content-Type: application/json");
         }
         else
         {
             $this->_sendResponse(401);
         }
     }
-    
+
     /*
      * Logout the application and storing the guid in the blacklist table
      * Inorder to avoid insecure subsequent requests after successful logout 
      */
+
     public function actionLogout()
     {
         $user_details = $this->validateToken();
-        if(!empty($user_details))
+        if (!empty($user_details))
         {
-            $json                     = file_get_contents('php://input');
-            $input_data               = CJSON::decode($json, true);
-            
+            $json       = file_get_contents('php://input');
+            $input_data = CJSON::decode($json, true);
+
             $blacklist                        = new BlackList();
             $blacklist->user_id               = $user_details['userid'];
             $blacklist->json_token_identifier = $user_details['guid'];
             $blacklist->save();
 
-            
+
             $loginid                      = $input_data['loginid'];
             $log_details                  = UserLicenseHistory::model()->findByPk($loginid);
             $log_details->logout_status   = 'Y';
             $log_details->pat_logout_time = $this->global_model->fetchDBTime();
             $log_details->pat_guid        = '';
             $log_details->update();
-            
-            
-            $result['status']             = 'success';
-            $result['message']            = "Logged Out Successfully";
-            $this->_sendResponse(200, $result, "Content-Type: application/json"); 
-            
+
+
+            $result['status']  = 'success';
+            $result['message'] = "Logged Out Successfully";
+            $this->_sendResponse(200, $result, "Content-Type: application/json");
         }
         else
         {
             $this->_sendResponse(401);
         }
     }
-    
+
 }
