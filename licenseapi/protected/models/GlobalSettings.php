@@ -131,7 +131,7 @@ class GlobalSettings extends CFormModel
                 $controller->_sendResponse(200, $result, "Content-Type: application/json");
                 break;
             case "LS":
-                $result['status']              = 'success';
+                $result['status']              = 'S';
                 $result['key']                 = $token->generated_token;
                 $result['userid']              = $token->userid;
                 $result['isexceeded']          = 'N';
