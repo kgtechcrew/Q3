@@ -20,13 +20,13 @@ class AppService extends CFormModel
             Yii::app()->session['token']  = $result['key'];
             Yii::app()->session['userid'] = $result['userid'];
         }
-
         if (is_numeric($result['userid']))
         {
+            Yii::app()->session['userid'] = $result['userid'];
             $this->userDeviceService($result);
         }
 
-        return $status;
+        return $result;
     }
 
     public function userDeviceService($result = array())
@@ -47,9 +47,36 @@ class AppService extends CFormModel
         $userdevice_info['isexceeded']     = $result['isexceeded'];
         $userdevice_info['deviceexceeded'] = $result['deviceexceeded'];
         $url                               = USER_DEVICE_API;
-        $token                             = Yii::app()->session['token'];
+        $token                             = !empty(Yii::app()->session['token']) ? Yii::app()->session['token'] : 'empty';
         $status                            = Controller::apiService($userdevice_info, $url, $token);
         Yii::app()->session['loginid']     = $status['loginid'];
+    }
+
+    public function dashboardService()
+    {
+        $json            = array();
+        $token           = Yii::app()->session['token'];
+        $json['loginid'] = Yii::app()->session['loginid'];
+        $url             = DASHBOARD_API;
+        $data            = Controller::apiService($json, $url, $token);
+        return $data;
+    }
+
+    public function trackLoginUserService()
+    {
+        $json  = array();
+        $token = Yii::app()->session['token'];
+        $url   = TRACK_LOGIN_USER_API;
+        $data  = Controller::apiService($json, $url, $token);
+        return $data;
+    }
+
+    public function logoutService()
+    {
+        $loginid = Yii::app()->session['loginid'];
+        $url     = TRACK_LOGIN_USER_API;
+        $data    = Controller::apiService($json, $url, $token);
+        return $data;
     }
 
 }

@@ -17,7 +17,7 @@
                                 <ul class="nav nav-pills">
                                     <li style="width: 33.3333%; display: none;"><a href="#details" data-toggle="tab" aria-expanded="false">  </a></li>
                                     <li style="width: 50%;" class="active"><a class="active" href="#captain" data-toggle="tab" aria-expanded="true"> </a></li>
-                                    <li style="width: 33%;"><a href="track.html"> Login User Tracking System  </a></li>
+                                    <li style="width: 33%;"><a href="<?php echo $this->createUrl('login/trackLoginUser'); ?>"> Login User Tracking System  </a></li>
                                 </ul>
                                 <div class="moving-tab" style="width: 240px;transform: translate3d(315px, 0px, 0px);transition: all 0.5s cubic-bezier(0.29, 1.42, 0.79, 1) 0s;">Dashboard</div>
 
@@ -68,7 +68,7 @@
                                                         <div class="icon">
                                                             <i class="material-icons">language</i>
                                                         </div>
-                                                        <h6>desktop chrome browser, Windows 7, <span class="amt"> IP :192.168.1.22 </span></h6>
+                                                        <h6><?php echo $dashboard['devtype'] . ' ' . $dashboard['sysbrowser'] . ' ' . $dashboard['sysos']; ?> <span class="amt"> IP : <?php echo $dashboard['sysip']; ?> </span></h6>
                                                     </div>
                                                 </div>
                                             </div>

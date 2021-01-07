@@ -15,6 +15,8 @@ defined('DB_PASSWORD') || define('DB_PASSWORD', '');
 define("WEBSVCSERVER", "http://localhost/");
 define("LOGIN_API", "Q3/licenseapi/license/login");
 define("USER_DEVICE_API", "Q3/licenseapi/license/storeUserDeviceInfo");
+define("DASHBOARD_API", "Q3/licenseapi/license/dashboard");
+define("TRACK_LOGIN_USER_API", "Q3/licenseapi/license/trackLoginUsers");
 define("WEBSVCUSERNAME", "admin");
 define("WEBSVCPASSWORD", "admin");
 
