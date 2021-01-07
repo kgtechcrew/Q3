@@ -2,8 +2,8 @@
 
 /** license api log, temp paths and log levels **/
 
-defined('LICENSEAPI_LOG_PATH') || define('LICENSEAPI_LOG_PATH', '../runtime/');
-defined('LICENSEAPI_TEMP_PATH') || define('LICENSEAPI_TEMP_PATH', '../runtime/');
+defined('LICENSEAPI_LOG_PATH') || define('LICENSEAPI_LOG_PATH', dirname(__FILE__) . '/../runtime/');
+defined('LICENSEAPI_TEMP_PATH') || define('LICENSEAPI_TEMP_PATH', dirname(__FILE__) . '/../runtime/');
 defined('LICENSEAPI_LOG_LEVEL') || define('LICENSEAPI_LOG_LEVEL', 'error, warning');
 
 /** DB Configurations * */
