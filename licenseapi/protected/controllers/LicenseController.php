@@ -115,7 +115,7 @@ class LicenseController extends Controller
         }
 
         $userhis                  = new UserLicenseHistory();
-        $userhis->user_id         = $user_details['userid'];
+        $userhis->user_id         = $input_data['userid'];
         $userhis->pat_login_time  = $this->global_model->fetchDBTime();
         $userhis->login_status    = $input_data['flag'];
         $userhis->pat_sys_ip      = $input_data['sysip'];
