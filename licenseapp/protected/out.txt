@@ -1,0 +1,84 @@
+12240: id:0 11:25:24 :: not overpopulation
+12240: id:4534 11:25:24 :: Pond::spawn::15
+12240: id:4534 11:25:24 :: php -q  D:\xampp\htdocs\websvc\protected\models\PaymentApi\genesis/../../../yiicmd.php scheduler "cc_breath" "4534" "585" :>  D:\xampp\htdocs\websvc\protected\models\PaymentApi\genesis/../../../logs/cc_breath.txt
+12240: id:4534 11:25:24 :: good ppointer
+13768: id:4534 11:25:24 :: Ameoba::live::16
+13768: id:4534 11:25:24 :: Ameoba::life::23
+13768: id:4534 11:25:24 :: Ameoba::life::40 PROCESSING STARTED
+13768: id:4534 11:26:29 :: Ameoba::life::43 PROCESSING DONE
+13768: id:4534 11:26:29 :: Ameoba::life::46
+13768: id:4534 11:26:29 :: Ameoba::death::97
+13768: id:4534 11:26:29 :: Ameoba::death::102
+13768: id:4534 11:26:29 :: Ameoba::death::106 COMMIT
+12240: id:4534 11:26:29 :: after pclose
+12240: id:4534 11:26:29 :: Pond::spawn::17
+12240: id:4534 11:26:30 :: not overpopulation
+12240: id:4535 11:26:30 :: Pond::spawn::15
+12240: id:4535 11:26:30 :: php -q  D:\xampp\htdocs\websvc\protected\models\PaymentApi\genesis/../../../yiicmd.php scheduler "cc_breath" "4535" "585" :>  D:\xampp\htdocs\websvc\protected\models\PaymentApi\genesis/../../../logs/cc_breath.txt
+12240: id:4535 11:26:30 :: good ppointer
+17072: id:4535 11:26:30 :: Ameoba::live::16
+17072: id:4535 11:26:30 :: Ameoba::life::23
+17072: id:4535 11:26:30 :: Ameoba::life::40 PROCESSING STARTED
+17072: id:4535 11:26:33 :: Ameoba::life::43 PROCESSING DONE
+17072: id:4535 11:26:33 :: Ameoba::life::46
+17072: id:4535 11:26:33 :: Ameoba::death::97
+17072: id:4535 11:26:33 :: Ameoba::death::102
+17072: id:4535 11:26:33 :: Ameoba::death::106 COMMIT
+12240: id:4535 11:26:33 :: after pclose
+12240: id:4535 11:26:33 :: Pond::spawn::17
+12240: id:4535 11:26:34 :: not overpopulation
+12240: id:4536 11:26:34 :: Pond::spawn::15
+12240: id:4536 11:26:34 :: php -q  D:\xampp\htdocs\websvc\protected\models\PaymentApi\genesis/../../../yiicmd.php scheduler "cc_breath" "4536" "585" :>  D:\xampp\htdocs\websvc\protected\models\PaymentApi\genesis/../../../logs/cc_breath.txt
+12240: id:4536 11:26:34 :: good ppointer
+20532: id:4536 11:26:34 :: Ameoba::live::16
+20532: id:4536 11:26:34 :: Ameoba::life::23
+20532: id:4536 11:26:34 :: Ameoba::life::40 PROCESSING STARTED
+20532: id:4536 11:26:35 :: Ameoba::life::43 PROCESSING DONE
+20532: id:4536 11:26:35 :: Ameoba::life::46
+20532: id:4536 11:26:35 :: Ameoba::death::97
+20532: id:4536 11:26:35 :: Ameoba::death::102
+20532: id:4536 11:26:35 :: Ameoba::death::106 COMMIT
+12240: id:4536 11:26:35 :: after pclose
+12240: id:4536 11:26:35 :: Pond::spawn::17
+15536: id:0 11:27:11 :: not overpopulation
+15536: id:4534 11:27:11 :: Pond::spawn::15
+15536: id:4534 11:27:11 :: php -q  D:\xampp\htdocs\websvc\protected\models\PaymentApi\genesis/../../../yiicmd.php scheduler "cc_breath" "4534" "585" :>  D:\xampp\htdocs\websvc\protected\models\PaymentApi\genesis/../../../logs/cc_breath.txt
+15536: id:4534 11:27:11 :: good ppointer
+19572: id:4534 11:27:11 :: Ameoba::live::16
+19572: id:4534 11:27:11 :: Ameoba::life::23
+19572: id:4534 11:27:11 :: Ameoba::life::40 PROCESSING STARTED
+19572: id:4534 11:27:12 :: Ameoba::life::43 PROCESSING DONE
+19572: id:4534 11:27:12 :: Ameoba::life::46
+19572: id:4534 11:27:12 :: Ameoba::death::97
+19572: id:4534 11:27:12 :: Ameoba::death::102
+19572: id:4534 11:27:12 :: Ameoba::death::106 COMMIT
+15536: id:4534 11:27:12 :: after pclose
+15536: id:4534 11:27:12 :: Pond::spawn::17
+15536: id:4534 11:27:13 :: not overpopulation
+15536: id:4535 11:27:13 :: Pond::spawn::15
+15536: id:4535 11:27:13 :: php -q  D:\xampp\htdocs\websvc\protected\models\PaymentApi\genesis/../../../yiicmd.php scheduler "cc_breath" "4535" "585" :>  D:\xampp\htdocs\websvc\protected\models\PaymentApi\genesis/../../../logs/cc_breath.txt
+15536: id:4535 11:27:13 :: good ppointer
+17576: id:4535 11:27:13 :: Ameoba::live::16
+17576: id:4535 11:27:13 :: Ameoba::life::23
+17576: id:4535 11:27:13 :: Ameoba::life::40 PROCESSING STARTED
+17576: id:4535 11:27:14 :: Ameoba::life::43 PROCESSING DONE
+17576: id:4535 11:27:14 :: Ameoba::life::46
+17576: id:4535 11:27:14 :: Ameoba::death::97
+17576: id:4535 11:27:14 :: Ameoba::death::102
+17576: id:4535 11:27:14 :: Ameoba::death::106 COMMIT
+15536: id:4535 11:27:14 :: after pclose
+15536: id:4535 11:27:14 :: Pond::spawn::17
+15536: id:4535 11:27:15 :: not overpopulation
+15536: id:4536 11:27:15 :: Pond::spawn::15
+15536: id:4536 11:27:15 :: php -q  D:\xampp\htdocs\websvc\protected\models\PaymentApi\genesis/../../../yiicmd.php scheduler "cc_breath" "4536" "585" :>  D:\xampp\htdocs\websvc\protected\models\PaymentApi\genesis/../../../logs/cc_breath.txt
+15536: id:4536 11:27:15 :: good ppointer
+7880: id:4536 11:27:15 :: Ameoba::live::16
+7880: id:4536 11:27:15 :: Ameoba::life::23
+7880: id:4536 11:27:15 :: Ameoba::life::40 PROCESSING STARTED
+7880: id:4536 11:27:16 :: Ameoba::life::43 PROCESSING DONE
+7880: id:4536 11:27:16 :: Ameoba::life::46
+7880: id:4536 11:27:16 :: Ameoba::death::97
+7880: id:4536 11:27:16 :: Ameoba::death::102
+7880: id:4536 11:27:16 :: Ameoba::death::106 COMMIT
+15536: id:4536 11:27:16 :: after pclose
+15536: id:4536 11:27:16 :: Pond::spawn::17
