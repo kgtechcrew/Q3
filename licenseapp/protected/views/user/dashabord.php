@@ -10,14 +10,14 @@
                                 <h3 class="wizard-title" style="position: relative">
                                     Employee Tracking System
                                     <div class="pull-right mr-3" style=" position: absolute;   right: 0;    top: -16px;   right: 18px;"> 
-                                        <a href="<?php echo $this->createUrl('login/logout'); ?>" class="btn btn-dark mr-3"> <span class="material-icons">power_settings_new</span> </a></div>
+                                        <a href="<?php echo $this->createUrl('user/logout'); ?>" class="btn btn-dark mr-3"> <span class="material-icons">power_settings_new</span> </a></div>
                                 </h3>
                             </div>
                             <div class="wizard-navigation">
                                 <ul class="nav nav-pills">
                                     <li style="width: 33.3333%; display: none;"><a href="#details" data-toggle="tab" aria-expanded="false">  </a></li>
                                     <li style="width: 50%;" class="active"><a class="active" href="#captain" data-toggle="tab" aria-expanded="true"> </a></li>
-                                    <li style="width: 33%;"><a href="<?php echo $this->createUrl('login/trackLoginUser'); ?>"> Login User Tracking System  </a></li>
+                                    <li style="width: 33%;"><a href="<?php echo $this->createUrl('user/trackLoginUser'); ?>"> Login User Tracking System  </a></li>
                                 </ul>
                                 <div class="moving-tab" style="width: 240px;transform: translate3d(315px, 0px, 0px);transition: all 0.5s cubic-bezier(0.29, 1.42, 0.79, 1) 0s;">Dashboard</div>
 
@@ -59,7 +59,7 @@
                                                         <div class="icon">
                                                             <i class="material-icons">verified</i>
                                                         </div>
-                                                        <h6>Your licence number : <span class="amt"> <?php echo $dashboard['license']; ?> </span> </h6>
+                                                        <h6>Your license number : <span class="amt"> <?php echo $dashboard['license']; ?> </span> </h6>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">

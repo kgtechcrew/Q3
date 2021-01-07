@@ -13,12 +13,12 @@ function loginRequest()
         data: $('#login_form').serialize(),
         async: false,
         dataType: "json",
-        url: setGlobalUrl('login/login'),
+        url: setGlobalUrl('user/login'),
         success: function(result)
         {
             if (result['status'] === 'S')
             {
-                window.location.href = setGlobalUrl('login/dashabord');
+                window.location.href = setGlobalUrl('user/dashabord');
             }
             else
             {

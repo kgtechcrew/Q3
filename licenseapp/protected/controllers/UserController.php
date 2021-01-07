@@ -5,7 +5,7 @@
  *
  * @author srinivasan.k
  */
-class LoginController extends Controller
+class UserController extends Controller
 {
 
     public $layout = '//layouts/main';
@@ -20,23 +20,7 @@ class LoginController extends Controller
 
     public function init()
     {
-        try
-        {
-            //$this->agsParams('user');
-        }
-        catch (Exception $e)
-        {
-//            if (DISPLAY_MAINTENANCE_SCREEN)
-//            {
-//                $this->redirect(Yii::app()->baseUrl . "/Maintenance.php");
-//            }
-//            else
-//            {
-//                Yii::app()->user->setState("error", $e);
-//                $this->ShowError();
-//                exit;
-//            }
-        }
+        
     }
 
     /**

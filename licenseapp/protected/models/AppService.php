@@ -81,8 +81,14 @@ class AppService extends CFormModel
         $url             = LOGOUT_API;
         $json['loginid'] = Yii::app()->session['loginid'];
         $token           = Yii::app()->session['token'];
-        $data            = Controller::apiService($json, $url, $token);
-        return $data;
+        Controller::apiService($json, $url, $token);
+        $this->destorySesssion();
+    }
+
+    public function destorySesssion()
+    {
+        Yii::app()->session->clear();
+        Yii::app()->session->destroy();
     }
 
 }

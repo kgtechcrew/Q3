@@ -4,7 +4,7 @@ require_once 'appconfig.php';
 return array(
     'basePath'          => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
     'name'              => 'LICENSE API',
-    'defaultController' => 'login/login',
+    'defaultController' => 'user/login',
     'preload'           => array('log'),
     'language'          => 'en',
     'import'            => array(
@@ -20,38 +20,39 @@ return array(
         ),
     ),
     'components'        => array(
-        'user'       => array(
-            'allowAutoLogin' => false,
+        'user'      => array(
+            'loginUrl'       => array('user/login'),
+            'allowAutoLogin' => true,
         ),
-        'session'    => array(
+        'session'   => array(
             'sessionName' => md5("LICENSEAPI"),
             'class'       => 'CDbHttpSession',
             'timeout'     => 1800, //(3600 * 8) 1 hour * 8 
         ),
-        'JWT'        => array(
+        'JWT'       => array(
             'class' => 'ext.JWT.JWT',
         ),
-        'phpseclib'  => array(
+        'phpseclib' => array(
             'class' => 'ext.phpseclib.PhpSecLib'
         ),
-        'db'         => array(
+        'db'        => array(
             'connectionString' => 'mysql:host=' . DB_IP . ';dbname=' . DB_NAME,
             'username'         => DB_USERNAME,
             'password'         => DB_PASSWORD,
             'tablePrefix'      => 'tbl_',
             'emulatePrepare'   => true,
         ),
-        /*'urlManager' => array(
-            'urlFormat'      => 'path',
-            'showScriptName' => false,
-            'caseSensitive'  => true,
-            'rules'          => array(
-                'post/<id:\d+>/<title:.*?>'     => 'post/view',
-                'posts/<tag:.*?>'               => 'post/index',
-                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-            ),
-        ), */
-        'log'        => array(
+        /* 'urlManager' => array(
+          'urlFormat'      => 'path',
+          'showScriptName' => false,
+          'caseSensitive'  => true,
+          'rules'          => array(
+          'post/<id:\d+>/<title:.*?>'     => 'post/view',
+          'posts/<tag:.*?>'               => 'post/index',
+          '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+          ),
+          ), */
+        'log'       => array(
             'class'  => 'CLogRouter',
             'routes' => array(
                 array(
