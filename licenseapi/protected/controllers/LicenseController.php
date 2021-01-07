@@ -187,7 +187,11 @@ class LicenseController extends Controller
             $result['message']            = "Logged Out Successfully";
             $this->_sendResponse(200, $result, "Content-Type: application/json"); 
             
-        } 
+        }
+        else
+        {
+            $this->_sendResponse(401);
+        }
     }
     
 }
