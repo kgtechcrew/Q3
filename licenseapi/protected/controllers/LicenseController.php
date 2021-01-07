@@ -53,6 +53,7 @@ class LicenseController extends Controller
 
                 $token->useremail = $username;
                 $token->userid    = $userdetails->udt_id;
+                $token->generated_token = $token->generateToken();
 
                 /* valid password check */
                 if ($valid_pwd)
@@ -73,8 +74,6 @@ class LicenseController extends Controller
                         }
                         else
                         {
-                            /* Returning JWT Token as successful login */
-                            $token->generated_token = $token->generateToken();
                             $this->global_model->formatResponseMessages("LS", $token);
                         }
                     }
@@ -121,7 +120,7 @@ class LicenseController extends Controller
             $userhis->pat_sys_browser = $input_data['sysbrowser'];
             $userhis->pat_sys_os      = $input_data['sysos'];
             $userhis->pat_dev_type    = $input_data['devtype'];
-            $userhis->pat_guid        = $user_details['guid'];
+            $userhis->pat_guid        = ($input_data['flag'] == 'S')?$user_details['guid']:'';
             $userhis->login_exceeded  = $input_data['isexceeded'];
             $userhis->device_exceeded = $input_data['deviceexceeded'];
             $userhis->save();
