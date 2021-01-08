@@ -146,6 +146,7 @@ class LicenseController extends Controller
         
         $user_license_details    = User::model()->findByPk($input_data['userid']);
         $result['license']       = $user_license_details->udt_licenseid;
+        $result['username']      = concat($user_license_details->udt_firstname, ' ', $user_license_details->udt_lastname);
         
         $this->_sendResponse(200, $result, "Content-Type: application/json");
     }

@@ -5,5 +5,5 @@ return array(
     'ADE'     => 'You have logged in on different devices, please logout from them to continue login here',
     'LS'      => 'You have successfully loggedin',
     'VPWD'    => 'Please enter a valid password',
-    'VUNAME'  => 'Please enter a valid username'
+    'VUNAME'  => 'Please enter a valid email'
 );
