@@ -16,14 +16,12 @@
                             <div class="wizard-navigation">
                                 <ul class="nav nav-pills">
                                     <li style="width: 14%;"><a href="#details" data-toggle="tab" aria-expanded="false">  </a></li>
-                                    <li style="width: 38%;" class="active"><a class="active" href="<?php echo $this->createUrl('user/dashabord'); ?>" aria-expanded="true"> Dashboard </a></li>
+                                    <li style="width: 38%;" class="active"><a class="active" href="<?php echo $this->createUrl('user/dashboard'); ?>" aria-expanded="true"> Dashboard </a></li>
                                     <li style="width: 33%;"><a href="<?php echo $this->createUrl('user/trackLoginUser'); ?>"> Login User Tracking System  </a></li>
                                 </ul>
                                 <div class="moving-tab" style="width: 240px;transform: translate3d(636px, 0px, 0px);transition: all 0.5s cubic-bezier(0.29, 1.42, 0.79, 1) 0s;">Concurrent Users List</div>
                                 <div class="tab-content">
                                     <div class="tab-pane show" id="description">
-
-
                                         <?php
                                         $active_user_list  = isset($login_user['loginusers']) ? $login_user['loginusers'] : array();
                                         $failure_user_list = isset($login_user['failedusers']) ? $login_user['failedusers'] : array();

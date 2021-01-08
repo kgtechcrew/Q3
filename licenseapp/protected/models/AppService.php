@@ -56,6 +56,10 @@ class AppService extends CFormModel
         Yii::app()->session['loginid']     = $status['loginid'];
     }
 
+    /**
+     * Dashboard Service
+     * @return type
+     */
     public function dashboardService()
     {
         $json            = array();
@@ -66,6 +70,10 @@ class AppService extends CFormModel
         return $data;
     }
 
+    /**
+     * Tracking Login User Service
+     * @return type
+     */
     public function trackLoginUserService()
     {
         $json  = array();
@@ -75,6 +83,9 @@ class AppService extends CFormModel
         return $data;
     }
 
+    /**
+     * Logout Service
+     */
     public function logoutService()
     {
         $json            = array();
@@ -85,6 +96,9 @@ class AppService extends CFormModel
         $this->destorySesssion();
     }
 
+    /**
+     * Destory The Session
+     */
     public function destorySesssion()
     {
         Yii::app()->session->clear();

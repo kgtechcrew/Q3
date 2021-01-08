@@ -18,7 +18,7 @@ function loginRequest()
         {
             if (result['status'] === 'success')
             {
-                window.location.href = setGlobalUrl('user/dashabord');
+                window.location.href = setGlobalUrl('user/dashboard');
             }
             else
             {

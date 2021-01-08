@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Description of login process.
+ * Description : This controller is used for call the all license api services.
  *
  * @author srinivasan.k
  */
@@ -18,13 +18,15 @@ class UserController extends Controller
         );
     }
 
+    /** Initialize Process  * */
     public function init()
     {
         
     }
 
     /**
-     * This function is used to login the portal
+     * Login process
+     * Basic Authorization username and password
      */
     public function actionLogin()
     {
@@ -44,13 +46,19 @@ class UserController extends Controller
         }
     }
 
-    public function actionDashabord()
+    /**
+     * Dashboard process
+     */
+    public function actionDashboard()
     {
         $model     = new AppService();
         $dashboard = $model->dashboardService();
         $this->render('dashabord', array('dashboard' => $dashboard));
     }
 
+    /**
+     * Get Tracking Login User Information
+     */
     public function actionTrackLoginUser()
     {
         $model      = new AppService();
@@ -58,6 +66,9 @@ class UserController extends Controller
         $this->render('track', array('login_user' => $login_user));
     }
 
+    /**
+     * Logout Process
+     */
     public function actionLogout()
     {
         $model = new AppService();
