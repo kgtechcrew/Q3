@@ -15,7 +15,7 @@ class AppService extends CFormModel
     {
         $result = Controller::loginApi($loginForm);
         $status = $result['status'];
-        if ($status == 'S')
+        if ($status == 'success')
         {
             Yii::app()->session['token']  = $result['key'];
             Yii::app()->session['userid'] = $result['userid'];
@@ -28,7 +28,7 @@ class AppService extends CFormModel
 
         return $result;
     }
-    
+
     /**
      * This function is used to send the 
      * @param type $result
@@ -47,7 +47,7 @@ class AppService extends CFormModel
         $userdevice_info['sysbrowser']     = $sysbrowser;
         $userdevice_info['sysos']          = $sysos;
         $userdevice_info['devtype']        = $devtype;
-        $userdevice_info['flag']           = $result['status'];
+        $userdevice_info['flag']           = ($result['status'] == "success") ? 'S' : 'F';
         $userdevice_info['isexceeded']     = $result['isexceeded'];
         $userdevice_info['deviceexceeded'] = $result['deviceexceeded'];
         $url                               = USER_DEVICE_API;

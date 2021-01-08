@@ -8,7 +8,7 @@
                         <form action="" method="">
                             <div class="wizard-header">
                                 <h3 class="wizard-title" style="position: relative">
-                                    Employee Tracking System
+                                     <?php echo Yii::t('ui', 'portal_title'); ?>
                                     <div class="pull-right mr-3" style=" position: absolute;   right: 0;    top: -16px;   right: 18px;"> 
                                         <a href="<?php echo $this->createUrl('user/logout'); ?>" class="btn btn-dark mr-3"> <span class="material-icons">power_settings_new</span> </a></div>
                                 </h3>
@@ -17,7 +17,7 @@
                                 <ul class="nav nav-pills">
                                     <li style="width: 33.3333%; display: none;"><a href="#details" data-toggle="tab" aria-expanded="false">  </a></li>
                                     <li style="width: 50%;" class="active"><a class="active" href="#captain" data-toggle="tab" aria-expanded="true"> </a></li>
-                                    <li style="width: 33%;"><a href="<?php echo $this->createUrl('user/trackLoginUser'); ?>"> Login User Tracking System  </a></li>
+                                    <li style="width: 33%;"><a href="<?php echo $this->createUrl('user/trackLoginUser'); ?>"> Concurrent Users List  </a></li>
                                 </ul>
                                 <div class="moving-tab" style="width: 240px;transform: translate3d(315px, 0px, 0px);transition: all 0.5s cubic-bezier(0.29, 1.42, 0.79, 1) 0s;">Dashboard</div>
 
@@ -50,7 +50,7 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane show" id="captain">
-                                        <h4 class="info-text">Display the  details as the below </h4>
+                                        <h4 class="info-text"> Welcome Srinivasan.K</h4>
                                         <div class="row">
                                             <div class="col-sm-10 col-sm-offset-1">
                                                 <div class="col-sm-6">
