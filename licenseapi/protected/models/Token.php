@@ -14,8 +14,12 @@ class Token
     
     public function generateToken($guid = NULL)
     {
+        $sql     = "SELECT trim(global_value) FROM lgt_license_global_table WHERE global_key = 'token_expiration_time'";
+        $minutes = Yii::app()->db->createCommand($sql)->queryScalar();
+        $minutes = empty($minutes)?10:$minutes;
+        
         $iat   = time();
-        $exp   = $iat + 1 * 60 * 10;
+        $exp   = $iat + 1 * 60 * $minutes;
         
         /** Generating the guid **/
         $guid  = empty($guid)?$this->generateGuid():$guid;
