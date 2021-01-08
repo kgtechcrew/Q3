@@ -113,25 +113,25 @@ class GlobalSettings extends CFormModel
         switch($mode)
         {
             case "LCE":
-                $result['status']             = 'F';
+                $result['status']             = 'failure';
                 $result['key']                = NULL;
                 $result['userid']             = $token->userid;
                 $result['isexceeded']         = 'Y';
                 $result['deviceexceeded']     = 'N';
                 $result['message']            = Yii::t('ui','LCE');
-                $controller->_sendResponse(200, $result, "Content-Type: application/json");
+                $controller->_sendResponse(409, $result, "Content-Type: application/json");
                 break;
             case "ADE":
-                $result['status']              = 'F';
+                $result['status']              = 'failure';
                 $result['key']                 = NULL;
                 $result['userid']              = $token->userid;
                 $result['isexceeded']          = 'N';
                 $result['deviceexceeded']      = 'Y';
                 $result['message']             = Yii::t('ui','ADE');
-                $controller->_sendResponse(200, $result, "Content-Type: application/json");
+                $controller->_sendResponse(409, $result, "Content-Type: application/json");
                 break;
             case "LS":
-                $result['status']              = 'S';
+                $result['status']              = 'success';
                 $result['key']                 = $token->generated_token;
                 $result['userid']              = $token->userid;
                 $result['isexceeded']          = 'N';
@@ -140,22 +140,22 @@ class GlobalSettings extends CFormModel
                 $controller->_sendResponse(200, $result, "Content-Type: application/json");
                 break;
             case "VPWD":
-                $result['status']              = 'F';
+                $result['status']              = 'failure';
                 $result['key']                 =  NULL;
                 $result['userid']              = $token->userid;
                 $result['isexceeded']          = 'N';
                 $result['deviceexceeded']      = 'N';
                 $result['message']             = Yii::t('ui','VPWD');
-                $controller->_sendResponse(200, $result, "Content-Type: application/json");
+                $controller->_sendResponse(401, $result, "Content-Type: application/json");
                 break;
             case "VUNAME":
-                $result['status']              = 'F';
+                $result['status']              = 'failure';
                 $result['key']                 = NULL;
                 $result['userid']              = NULL;
                 $result['isexceeded']          = 'N';
                 $result['deviceexceeded']      = 'N';
                 $result['message']             = Yii::t('ui','VUNAME');
-                $controller->_sendResponse(200, $result, "Content-Type: application/json");
+                $controller->_sendResponse(401, $result, "Content-Type: application/json");
                 break;
             default:
                 $result['status']              = NULL;

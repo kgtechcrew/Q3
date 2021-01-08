@@ -90,7 +90,7 @@ class LicenseController extends Controller
         }
         else
         {
-            $this->_sendResponse(500);
+            $this->_sendResponse(400);
         }
     }
 
@@ -190,8 +190,10 @@ class LicenseController extends Controller
         $user_details = $this->validateToken();
         if (!empty($user_details))
         {
-            $user                       = new User();
-            $user_login_details         = $user->trackLoginUsers();
+            $user                              = new User();
+            $user_login_details                = array();
+            $user_login_details['loginusers']  = $user->trackLoginUsers();
+            $user_login_details['failedusers'] = $user->trackFailedUsers();
             $this->_sendResponse(200, $user_login_details, "Content-Type: application/json");
         }
         else
