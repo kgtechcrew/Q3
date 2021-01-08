@@ -1,0 +1,110 @@
+{
+	"variables": [],
+	"info": {
+		"name": "LICENSE API",
+		"_postman_id": "87df0b9a-c6af-ebd4-4df6-841ff54a087f",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "LICENSE API LOGIN",
+			"request": {
+				"url": "http://localhost/licenseapi/license/login",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic ZGluZXNoa3VtYXIuZGV2YXJhakBrZ2lzbC5jb206S2dpc2xAMTIz",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "LICENSE API STORE DEVICE INFO",
+			"request": {
+				"url": "http://localhost/Q3/licenseapi/license/storeUserDeviceInfo",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MTAwMDUxNjcsImV4cCI6MTYxMDAwNTc2NywianRpIjoiQUM0Mjg5NjEtMzQ3Ny1BNEMxLTVDOEItN0REQTJDQ0E2QzQ0IiwicHJvZmlsZXMiOlt7ImVtYWlsIjoic3Jpbml2YXNhbi5rQGtnaXNsLmNvbSIsInVzZXJpZCI6IjIwMCJ9XX0.pYa_lBtzmr68KPlSi98nrCx7a-En_aoCIDI1Up_FWzc",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userid\" : 200,\n\t\"sysip\" : \"10.100.4.242\",\n\t\"sysbrowser\" : \"chrome\",\n\t\"sysos\" : \"windows\",\n\t\"devtype\" : \"desktop\",\n\t\"flag\" : \"S\",\n\t\"isexceeded\" : \"N\",\n\t\"deviceexceeded\" : \"N\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "LICENSE API CONCURRENT USERS LIST",
+			"request": {
+				"url": "http://localhost/Q3/licenseapi/license/trackLoginUsers",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MTAwMDUxNjcsImV4cCI6MTYxMDAwNTc2NywianRpIjoiQUM0Mjg5NjEtMzQ3Ny1BNEMxLTVDOEItN0REQTJDQ0E2QzQ0IiwicHJvZmlsZXMiOlt7ImVtYWlsIjoic3Jpbml2YXNhbi5rQGtnaXNsLmNvbSIsInVzZXJpZCI6IjIwMCJ9XX0.pYa_lBtzmr68KPlSi98nrCx7a-En_aoCIDI1Up_FWzc",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "LICENSE API LOGOUT",
+			"request": {
+				"url": "http://localhost/Q3/licenseapi/license/logout",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"loginid\" : 13\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "LICENSE API DASHBOARD",
+			"request": {
+				"url": "http://localhost/Q3/licenseapi/license/dashboard",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"loginid\" : 2\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
