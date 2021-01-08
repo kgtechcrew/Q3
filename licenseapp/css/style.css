@@ -2486,3 +2486,7 @@ footer .pull-center {
 .modal-body {
     font-weight: 400 !important;
 }
+.info-text {
+    font-size: 20px;
+    font-weight: 400 !important;
+}

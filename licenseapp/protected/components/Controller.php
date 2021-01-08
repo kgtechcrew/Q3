@@ -207,7 +207,7 @@ class Controller extends CController
         $restClient->ssl(FALSE);
         $response   = $restClient->post($server . $url, $json_data, 'json');
         $status     = $restClient->status();
-        if ($status == 200)
+        if (!empty($response))
         {
             return CJSON::decode(CJSON::encode($response, true), true);
         }
@@ -236,7 +236,7 @@ class Controller extends CController
         $json_data      = array();
         $response       = $restClient->post($server . $url, $json_data, 'json');
         $status         = $restClient->status();
-        if ($status == 200)
+        if (!empty($response))
         {
             return CJSON::decode(CJSON::encode($response, true), true);
         }
