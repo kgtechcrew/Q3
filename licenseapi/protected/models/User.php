@@ -92,6 +92,7 @@ class User extends CActiveRecord
         $userid                 = $login_details->user_id;
         $user_license_details   = User::model()->findByPk($userid);
         $response['license']    = $user_license_details->udt_licenseid;
+        $response['username']   = concat($user_license_details->udt_firstname, ' ', $user_license_details->udt_lastname);
         return $response;
     }
     
