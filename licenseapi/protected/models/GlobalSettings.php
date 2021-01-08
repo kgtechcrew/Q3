@@ -97,6 +97,29 @@ class GlobalSettings extends CFormModel
         return $datetime;
     }
     
+    /**
+     * 
+     * @param type $userid
+     * @param type $flag
+     * fetching the reponse messages from the global message table based on the user license
+     */
+    public function fetchResponseMessages($userid, $flag)
+    {
+        
+        if(!empty($userid))
+        {
+            $user_license_details   = User::model()->findByPk($userid);
+            $licenseid              = $user_license_details->udt_licenseid;
+            $sql                    = "SELECT TRIM(VALUE) FROM lmg_license_response_messages WHERE licenseid = '".$licenseid."' AND respkey = '".$flag."'";
+            $message                = Yii::app()->db->createCommand($sql)->queryScalar();
+            return message;
+        }
+        else
+        {
+            return Yii::t('ui', $flag);
+        } 
+    }
+    
     /*
      * This function is used for returning the response for all the license related request actions.
      * LCE    --------> Login Count Exceeded
@@ -118,7 +141,7 @@ class GlobalSettings extends CFormModel
                 $result['userid']             = $token->userid;
                 $result['isexceeded']         = 'Y';
                 $result['deviceexceeded']     = 'N';
-                $result['message']            = Yii::t('ui','LCE');
+                $result['message']            = $this->fetchResponseMessages($token->userid, "LCE");
                 $controller->_sendResponse(409, $result, "Content-Type: application/json");
                 break;
             case "ADE":
@@ -127,7 +150,7 @@ class GlobalSettings extends CFormModel
                 $result['userid']              = $token->userid;
                 $result['isexceeded']          = 'N';
                 $result['deviceexceeded']      = 'Y';
-                $result['message']             = Yii::t('ui','ADE');
+                $result['message']             = $this->fetchResponseMessages($token->userid, "ADE");
                 $controller->_sendResponse(409, $result, "Content-Type: application/json");
                 break;
             case "LS":
@@ -136,7 +159,7 @@ class GlobalSettings extends CFormModel
                 $result['userid']              = $token->userid;
                 $result['isexceeded']          = 'N';
                 $result['deviceexceeded']      = 'N';
-                $result['message']             = Yii::t('ui','LS');
+                $result['message']             = $this->fetchResponseMessages($token->userid, "LS");
                 $controller->_sendResponse(200, $result, "Content-Type: application/json");
                 break;
             case "VPWD":
@@ -145,7 +168,7 @@ class GlobalSettings extends CFormModel
                 $result['userid']              = $token->userid;
                 $result['isexceeded']          = 'N';
                 $result['deviceexceeded']      = 'N';
-                $result['message']             = Yii::t('ui','VPWD');
+                $result['message']             = $this->fetchResponseMessages($token->userid, "VPWD");
                 $controller->_sendResponse(401, $result, "Content-Type: application/json");
                 break;
             case "VUNAME":
@@ -154,7 +177,7 @@ class GlobalSettings extends CFormModel
                 $result['userid']              = NULL;
                 $result['isexceeded']          = 'N';
                 $result['deviceexceeded']      = 'N';
-                $result['message']             = Yii::t('ui','VUNAME');
+                $result['message']             = $this->fetchResponseMessages('', "VUNAME");
                 $controller->_sendResponse(401, $result, "Content-Type: application/json");
                 break;
             default:
