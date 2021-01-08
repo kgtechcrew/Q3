@@ -29,7 +29,7 @@ A license module is developed in the name of user tracking system which can be r
      sathiyaraj.r@jgisl.com
      mahendran.k@kgisl.com
      santhosh.s@kgisl.com
-7. Use the following password irrespective of all the logins Kgisl@123
+7. Use the following password irrespective of all the logins -  Kgisl@123
 
 ## Rest API
 API Authentication - This API is authenticated using JWT token concept inorder to increase the security of the API, It will prevent API attacks.
