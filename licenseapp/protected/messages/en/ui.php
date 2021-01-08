@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    'portal_title'     => 'Employee Tracking System',
+    'portal_title'     => 'User Tracking System',
     'login'            => 'Login',
     'login_basic_info' => "Let's start with the basic details.",
     'username'         => 'Your User Name',
