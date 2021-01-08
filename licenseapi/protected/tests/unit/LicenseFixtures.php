@@ -1,23 +1,15 @@
 <?php
 
 /**
- * License Fixtures test information.
+ * License Fixtures Test information.
+ *
+ * @author srinivasan.k
  */
 class LicenseFixtures
 {
 
-    public function userInformation()
-    {
-        return array('record1' =>
-            array('udt_firstname' => 'FIRST NAME',
-                'udt_lastname'  => 'LAST NAME',
-                'udt_email'     => 'test_user',
-                'udt_password'  => 'Kgisl@123')
-        );
-    }
-
     /**
-     * Default looged user information
+     *  User Login History Information
      * @return type
      */
     public function licenseUserHistory()
