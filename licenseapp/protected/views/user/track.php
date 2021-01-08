@@ -16,14 +16,12 @@
                             <div class="wizard-navigation">
                                 <ul class="nav nav-pills">
                                     <li style="width: 14%;"><a href="#details" data-toggle="tab" aria-expanded="false">  </a></li>
-                                    <li style="width: 38%;" class="active"><a class="active" href="<?php echo $this->createUrl('user/dashabord'); ?>" aria-expanded="true"> Dashboard </a></li>
+                                    <li style="width: 38%;" class="active"><a class="active" href="<?php echo $this->createUrl('user/dashboard'); ?>" aria-expanded="true"> Dashboard </a></li>
                                     <li style="width: 33%;"><a href="<?php echo $this->createUrl('user/trackLoginUser'); ?>"> Login User Tracking System  </a></li>
                                 </ul>
                                 <div class="moving-tab" style="width: 240px;transform: translate3d(636px, 0px, 0px);transition: all 0.5s cubic-bezier(0.29, 1.42, 0.79, 1) 0s;">Concurrent Users List</div>
                                 <div class="tab-content">
                                     <div class="tab-pane show" id="description">
-
-
                                         <?php
                                         $active_user_list  = isset($login_user['loginusers']) ? $login_user['loginusers'] : array();
                                         $failure_user_list = isset($login_user['failedusers']) ? $login_user['failedusers'] : array();
@@ -34,15 +32,15 @@
                                                 <table class="table table-bordered">
                                                     <thead class="thead-light">
                                                         <tr>
-                                                            <th scope="col">User Name</th>
-                                                            <th scope="col">User Email</th>
-                                                            <th scope="col">License Id</th>
-                                                            <th scope="col">Login DateTime</th>
-                                                            <th scope="col">IP</th>
-                                                            <th scope="col">Browser</th>
-                                                            <th scope="col">Operating System</th>
-                                                            <th scope="col">Device Type</th>
-                                                            <th scope="col">Number Of Devices</th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_user_name'); ?></th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_user_email'); ?></th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_license_id'); ?></th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_login_datetime'); ?></th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_ip'); ?></th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_browser'); ?></th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_op_sys'); ?></th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_dev_type'); ?></th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_no_device'); ?></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -75,14 +73,14 @@
                                                 <table class="table table-bordered">
                                                     <thead class="thead-light">
                                                         <tr>
-                                                            <th scope="col">User Name</th>
-                                                            <th scope="col">User Email</th>
-                                                            <th scope="col">License Id</th>
-                                                            <th scope="col">Login DateTime</th>
-                                                            <th scope="col">IP</th>
-                                                            <th scope="col">Browser</th>
-                                                            <th scope="col">Operating System</th>
-                                                            <th scope="col">Device Type</th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_user_name'); ?></th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_user_email'); ?></th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_license_id'); ?></th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_login_datetime'); ?></th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_ip'); ?></th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_browser'); ?></th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_op_sys'); ?></th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_dev_type'); ?></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>

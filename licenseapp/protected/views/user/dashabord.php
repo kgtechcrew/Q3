@@ -8,7 +8,7 @@
                         <form action="" method="">
                             <div class="wizard-header">
                                 <h3 class="wizard-title" style="position: relative">
-                                     <?php echo Yii::t('ui', 'portal_title'); ?>
+                                    <?php echo Yii::t('ui', 'portal_title'); ?>
                                     <div class="pull-right mr-3" style=" position: absolute;   right: 0;    top: -16px;   right: 18px;"> 
                                         <a href="<?php echo $this->createUrl('user/logout'); ?>" class="btn btn-dark mr-3"> <span class="material-icons">power_settings_new</span> </a></div>
                                 </h3>
@@ -19,7 +19,7 @@
                                     <li style="width: 50%;" class="active"><a class="active" href="#captain" data-toggle="tab" aria-expanded="true"> </a></li>
                                     <li style="width: 33%;"><a href="<?php echo $this->createUrl('user/trackLoginUser'); ?>"> Concurrent Users List  </a></li>
                                 </ul>
-                                <div class="moving-tab" style="width: 240px;transform: translate3d(315px, 0px, 0px);transition: all 0.5s cubic-bezier(0.29, 1.42, 0.79, 1) 0s;">Dashboard</div>
+                                <div class="moving-tab" style="width: 240px;transform: translate3d(315px, 0px, 0px);transition: all 0.5s cubic-bezier(0.29, 1.42, 0.79, 1) 0s;"><?php echo Yii::t('ui', 'dashboard'); ?></div>
 
                                 <div class="tab-content">
                                     <div class="tab-pane" id="details">
@@ -50,7 +50,7 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane show" id="captain">
-                                        <h4 class="info-text"> Welcome Srinivasan.K</h4>
+                                        <h4 class="info-text"> <?php echo Yii::t('ui', 'welcome') . ' ' . $dashboard['username']; ?></h4>
                                         <div class="row">
                                             <div class="col-sm-10 col-sm-offset-1">
                                                 <div class="col-sm-6">
@@ -59,7 +59,7 @@
                                                         <div class="icon">
                                                             <i class="material-icons">verified</i>
                                                         </div>
-                                                        <h6>Your license number : <span class="amt"> <?php echo $dashboard['license']; ?> </span> </h6>
+                                                        <h6><?php echo Yii::t('ui', 'license_no'); ?> : <span class="amt"> <?php echo $dashboard['license']; ?> </span> </h6>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
@@ -68,11 +68,11 @@
                                                         <div class="icon">
                                                             <i class="material-icons">language</i>
                                                         </div>
-                                                        <h6> Your Browser Details 
-                                                            <span class="amt"> Device Type : <?php echo $dashboard['devtype']; ?></span>
-                                                            <span class="amt"> Browser : <?php echo $dashboard['sysbrowser']; ?></span>
-                                                            <span class="amt"> System OS : <?php echo $dashboard['sysos']; ?></span>
-                                                            <span class="amt"> IP : <?php echo $dashboard['sysip']; ?> </span>
+                                                        <h6> <?php echo Yii::t('ui', 'browser_details'); ?>
+                                                            <span class="amt"><?php echo Yii::t('ui', 'device_type') . ' ' . $dashboard['devtype']; ?></span>
+                                                            <span class="amt"><?php echo Yii::t('ui', 'browser') . ' ' . $dashboard['sysbrowser']; ?></span>
+                                                            <span class="amt"><?php echo Yii::t('ui', 'sys_os') . ' ' . $dashboard['sysos']; ?></span>
+                                                            <span class="amt"><?php echo Yii::t('ui', 'ip') . ' ' . $dashboard['sysip']; ?> </span>
                                                         </h6>
                                                     </div>
                                                 </div>

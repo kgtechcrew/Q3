@@ -50,7 +50,7 @@ function clearErrorMessage()
     $('#password_error').html('');
 }
 
-/** Back button restructions **/
+/** Back Button Restructions **/
 history.pushState(null, null, null);
 window.addEventListener('popstate', function() {
     history.pushState(null, null, null);
