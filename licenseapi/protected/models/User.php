@@ -146,12 +146,6 @@ class User extends CActiveRecord
         return $user_details;
     }
     
-    
-    
-    
-    
-
-
     public function insertUserInfo($data = array())
     {
         $model                   = new User();
