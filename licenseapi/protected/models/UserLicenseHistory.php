@@ -84,4 +84,17 @@ class UserLicenseHistory extends CActiveRecord
         $model->save();
         return $model->id;
     }
+
+    /**
+     * Delete the stored device information for unit testing
+     */
+    public function deleteStoredDeviceInfo($user_id)
+    {
+        $model = UserLicenseHistory::model()->findByPk($user_id);
+        if (!empty($model))
+        {
+            $model->delete();
+        }
+    }
+
 }

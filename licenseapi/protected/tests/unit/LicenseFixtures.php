@@ -28,6 +28,13 @@ class LicenseFixtures
                 'pat_sys_os'      => 'Windows 8',
                 'pat_dev_type'    => 'desktop',
             ),
+            '3' =>
+            array('user_id'         => '',
+                'pat_sys_ip'      => '192.168.1.24',
+                'pat_sys_browser' => 'chrome',
+                'pat_sys_os'      => 'Windows 8',
+                'pat_dev_type'    => 'laptop',
+            ),
         );
     }
 

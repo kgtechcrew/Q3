@@ -10,7 +10,7 @@ include_once 'LicenseFixtures.php';
 class LicenseTest extends CDbTestCase
 {
 
-    /** @var EntityMaster **/
+    /** @var EntityMaster * */
     protected $user;
     protected $controller;
     protected $userfixtures;
@@ -89,7 +89,7 @@ class LicenseTest extends CDbTestCase
      */
     public function testUsersAllowedDevicesExceeded()
     {
-        $user_list     = $this->storeDeviceInfo();
+        $list          = $this->storeDeviceInfo();
         $actual_output = $this->globalsetting->isUsersAllowedDevicesExceeded($this->default_user_id);
         $expected      = $this->checkUsersAllowedDevicesExceeded();
         if ($expected)
@@ -100,6 +100,7 @@ class LicenseTest extends CDbTestCase
         {
             $this->assertEquals($expected, $actual_output, 'User Allowed Device Count Exceeded');
         }
+        $this->deleteStoredTestDevice($list);
     }
 
     /**
@@ -141,15 +142,27 @@ class LicenseTest extends CDbTestCase
         $device_info          = $this->userfixtures->licenseUserHistory();
         $device_allowed_count = $this->getDevicesAllowedCount();
         $i                    = 1;
-        $user_id_list         = array();
+        $list                 = array();
 
         while ($i <= $device_allowed_count)
         {
             $device_info[$i]['user_id'] = $this->default_user_id;
-            $user_id_list[$i]           = $this->userlicensehistory->insertLicenseUserHistory($device_info[$i]);
+            $list[$i]                   = $this->userlicensehistory->insertLicenseUserHistory($device_info[$i]);
             $i++;
         }
-        return $user_id_list;
+        return $list;
+    }
+
+    /**
+     * Delete The Same User Multiple Device Information
+     * @param type $user_list
+     */
+    public function deleteStoredTestDevice($list)
+    {
+        foreach ($list as $history_id)
+        {
+            $this->userlicensehistory->deleteStoredDeviceInfo($history_id);
+        }
     }
 
 }
