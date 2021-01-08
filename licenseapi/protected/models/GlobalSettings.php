@@ -108,10 +108,12 @@ class GlobalSettings extends CFormModel
         
         if(!empty($userid))
         {
-            $user_license_details   = User::model()->findByPk($userid);
-            $licenseid              = $user_license_details->udt_licenseid;
-            $sql                    = "SELECT TRIM(VALUE) FROM lmg_license_response_messages WHERE licenseid = '".$licenseid."' AND respkey = '".$flag."'";
-            $message                = Yii::app()->db->createCommand($sql)->queryScalar();
+            $user_license_details = User::model()->findByPk($userid);
+            $licenseid            = $user_license_details->udt_licenseid;
+            $lsql                 = "SELECT ldt_id FROM ldt_license_details WHERE ldt_license = '" . $licenseid . "'";
+            $id                   = Yii::app()->db->createCommand($lsql)->queryScalar();
+            $sql                  = "SELECT TRIM(VALUE) FROM lmg_license_response_messages WHERE licenseid = '" . $id . "' AND respkey = '" . $flag . "'";
+            $message              = Yii::app()->db->createCommand($sql)->queryScalar();
             return $message;
         }
         else
