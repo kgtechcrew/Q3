@@ -25,4 +25,3 @@ API Authentication - This API is authenticated using JWT token concept inorder t
 
 1. PHP 7.3.2
 2. MYSQL 5.5.15
-
