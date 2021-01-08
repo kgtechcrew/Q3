@@ -213,7 +213,7 @@ class Controller extends CController
         }
         else
         {
-            return array();
+            Yii::app()->request->redirect('user/logout');
         }
     }
 
@@ -242,7 +242,7 @@ class Controller extends CController
         }
         else
         {
-            return array();
+            Yii::app()->request->redirect('user/logout');
         }
     }
 
