@@ -47,7 +47,8 @@ CREATE TABLE IF NOT EXISTS `lgt_license_global_table` (
 
 INSERT INTO `lgt_license_global_table` (`id`, `global_key`, `global_value`, `is_active`) VALUES
 	(1, 'concurrent_users', '2', 'Y'),
-	(2, 'allowed_devices', '3', 'Y');
+	(2, 'allowed_devices', '3', 'Y'),
+	(3, 'token_expiration_time', '10', 'Y');
 
 DROP TABLE IF EXISTS `license_his_user_log`;
 CREATE TABLE IF NOT EXISTS `license_his_user_log` (
