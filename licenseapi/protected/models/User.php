@@ -120,4 +120,19 @@ class User extends CActiveRecord
         $user_details = Yii::app()->db->createCommand($sql)->queryAll();
         return $user_details;
     }
+
+
+    public function insertUserInfo($data = array())
+    {
+        $model                   = new User();
+        $model->udt_licenseid    = '987654321';
+        $model->udt_email        = $data['udt_email'];
+        $model->udt_password     = md5($data['udt_password']);
+        $model->udt_firstname    = $data['udt_firstname'];
+        $model->udt_lastname     = $data['udt_lastname'];
+        $model->udt_active       = 'Y';
+        $model->udt_entered_date = date("Y-m-d H:i:s");
+        $model->save();
+    }
+
 }

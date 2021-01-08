@@ -67,4 +67,21 @@ class UserLicenseHistory extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+/**
+     * Store the user history information for unit testing.
+     */
+    public function insertLicenseUserHistory($data)
+    {
+        $model                  = new UserLicenseHistory();
+        $model->user_id         = $data['user_id'];
+        $model->pat_login_time  = date("Y-m-d H:i:s");
+        $model->login_status    = 'S';
+        $model->pat_sys_ip      = $data['pat_sys_ip'];
+        $model->pat_sys_browser = $data['pat_sys_browser'];
+        $model->pat_sys_os      = $data['pat_sys_os'];
+        $model->pat_dev_type    = $data['pat_dev_type'];
+        $model->save();
+        return $model->id;
+    }
 }
