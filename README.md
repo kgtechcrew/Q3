@@ -26,7 +26,7 @@ A license module is developed in the name of user tracking system which can be r
      tamilselvan.p@kgisl.com
      gowthamraj.v@kgisl.com
      sathishkanna.s@kgisl.com
-     sathiyaraj.r@jgisl.com
+     sathiyaraj.r@kgisl.com
      mahendran.k@kgisl.com
      santhosh.s@kgisl.com
 7. Use the following password irrespective of all the logins -  Kgisl@123
