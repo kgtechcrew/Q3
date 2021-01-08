@@ -32,15 +32,15 @@
                                                 <table class="table table-bordered">
                                                     <thead class="thead-light">
                                                         <tr>
-                                                            <th scope="col">User Name</th>
-                                                            <th scope="col">User Email</th>
-                                                            <th scope="col">License Id</th>
-                                                            <th scope="col">Login DateTime</th>
-                                                            <th scope="col">IP</th>
-                                                            <th scope="col">Browser</th>
-                                                            <th scope="col">Operating System</th>
-                                                            <th scope="col">Device Type</th>
-                                                            <th scope="col">Number Of Devices</th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_user_name'); ?></th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_user_email'); ?></th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_license_id'); ?></th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_login_datetime'); ?></th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_ip'); ?></th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_browser'); ?></th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_op_sys'); ?></th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_dev_type'); ?></th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_no_device'); ?></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -73,14 +73,14 @@
                                                 <table class="table table-bordered">
                                                     <thead class="thead-light">
                                                         <tr>
-                                                            <th scope="col">User Name</th>
-                                                            <th scope="col">User Email</th>
-                                                            <th scope="col">License Id</th>
-                                                            <th scope="col">Login DateTime</th>
-                                                            <th scope="col">IP</th>
-                                                            <th scope="col">Browser</th>
-                                                            <th scope="col">Operating System</th>
-                                                            <th scope="col">Device Type</th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_user_name'); ?></th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_user_email'); ?></th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_license_id'); ?></th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_login_datetime'); ?></th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_ip'); ?></th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_browser'); ?></th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_op_sys'); ?></th>
+                                                            <th scope="col"><?php echo Yii::t('ui', 'grid_dev_type'); ?></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
