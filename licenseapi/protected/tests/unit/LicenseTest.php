@@ -10,9 +10,7 @@ include_once 'LicenseFixtures.php';
 class LicenseTest extends CDbTestCase
 {
 
-    /**
-     * @var EntityMaster
-     */
+    /** @var EntityMaster **/
     protected $user;
     protected $controller;
     protected $userfixtures;
@@ -29,7 +27,7 @@ class LicenseTest extends CDbTestCase
     }
 
     /**
-     * test concurrent users exceeded
+     * Test Concurrent Users Exceeded
      */
     public function testConcurrentUsersExceeded()
     {
@@ -47,7 +45,7 @@ class LicenseTest extends CDbTestCase
     }
 
     /**
-     * check Concurrent Users Exceeded
+     * Check Concurrent Users Exceeded
      * TRUE  - user allowed count has exceed
      * FALSE - user allowed count has not exceed
      * @return boolean
@@ -67,7 +65,7 @@ class LicenseTest extends CDbTestCase
     }
 
     /**
-     * get user allowed count
+     * Get User Allowed Count
      * @return type
      */
     public function getUsersAllowedCount()
@@ -77,7 +75,7 @@ class LicenseTest extends CDbTestCase
     }
 
     /**
-     * get active user count
+     * Get Active User Count
      * @return type
      */
     public function getActiveUser()
@@ -86,6 +84,9 @@ class LicenseTest extends CDbTestCase
         return $active_current_user;
     }
 
+    /**
+     * Test Users Allowed Devices Exceeded
+     */
     public function testUsersAllowedDevicesExceeded()
     {
         $user_list     = $this->storeDeviceInfo();
@@ -102,7 +103,7 @@ class LicenseTest extends CDbTestCase
     }
 
     /**
-     * 
+     * Check Users Allowed Devices Exceeded
      * @return boolean
      */
     public function checkUsersAllowedDevicesExceeded()
@@ -121,7 +122,7 @@ class LicenseTest extends CDbTestCase
     }
 
     /**
-     * get device allowed count
+     * Get Device Allowed Count
      * @return type
      */
     public function getDevicesAllowedCount()
@@ -131,8 +132,8 @@ class LicenseTest extends CDbTestCase
     }
 
     /**
-     * Store the same user multiple device information
-     * Return the created user id list
+     * Store The Same User Multiple Device Information
+     * Return The Created User Id List
      * @return type
      */
     public function storeDeviceInfo()
@@ -149,23 +150,6 @@ class LicenseTest extends CDbTestCase
             $i++;
         }
         return $user_id_list;
-    }
-
-    public function createNewUser()
-    {
-        $userallowedcount = $this->getUsersAllowedCount();
-        $userallowedcount = $userallowedcount + 1;
-        $i                = 1;
-
-        while ($i <= $userallowedcount)
-        {
-            $testuser_information                             = $this->userfixtures->userInformation();
-            $testuser_information['record1']['udt_firstname'] = $testuser_information['record1']['udt_firstname'] . $i;
-            $testuser_information['record1']['udt_lastname']  = $testuser_information['record1']['udt_lastname'] . $i;
-            $testuser_information['record1']['udt_email']     = $testuser_information['record1']['udt_email'] . $i . '@gmail.com';
-            $this->user->insertUserInfo($testuser_information['record1']);
-            $i++;
-        }
     }
 
 }
